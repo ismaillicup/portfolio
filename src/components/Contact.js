@@ -20,13 +20,13 @@ export default function Contact() {
           name="contact"
           method="POST"
           data-netlify="true"
-          data-netlify-honeypot="bot-field"
+          netlify-honeypot="bot-field"
           className="max-w-xl mx-auto grid gap-4"
         >
-          {/* REQUIRED HIDDEN INPUT */}
+          {/* REQUIRED hidden input */}
           <input type="hidden" name="form-name" value="contact" />
 
-          {/* Honeypot (spam protection) */}
+          {/* Honeypot */}
           <input type="hidden" name="bot-field" />
 
           <input
@@ -34,7 +34,7 @@ export default function Contact() {
             name="name"
             placeholder="Your Name"
             required
-            className="p-3 rounded bg-white/5 border border-white/10 text-white focus:border-navhover focus:outline-none"
+            className="p-3 rounded bg-gray-800 text-white"
           />
 
           <input
@@ -42,7 +42,7 @@ export default function Contact() {
             name="email"
             placeholder="Your Email"
             required
-            className="p-3 rounded bg-white/5 border border-white/10 text-white focus:border-navhover focus:outline-none"
+            className="p-3 rounded bg-gray-800 text-white"
           />
 
           <textarea
@@ -50,36 +50,33 @@ export default function Contact() {
             placeholder="Your Message"
             rows="5"
             required
-            className="p-3 rounded bg-white/5 border border-white/10 text-white focus:border-navhover focus:outline-none"
-          />
+            className="p-3 rounded bg-gray-800 text-white"
+          ></textarea>
 
           <button
             type="submit"
-            className="
-              bg-accent text-base font-semibold py-3 rounded
-              hover:opacity-90 transition
-            "
+            className="bg-accent text-base font-semibold py-3 rounded hover:opacity-90"
           >
             Send Message
           </button>
         </form>
 
-        {/* QUICK CONTACT ICONS */}
+        {/* SOCIAL LINKS */}
         <div className="mt-8 flex justify-center gap-6 text-2xl">
           <a href={socialLinks.github} target="_blank" rel="noreferrer">
-            <FaGithub className="hover:text-navhover" />
+            <FaGithub className="hover:text-accent" />
           </a>
 
           <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">
-            <FaLinkedin className="hover:text-navhover" />
+            <FaLinkedin className="hover:text-accent" />
           </a>
 
           <a href="mailto:ismail.icup@gmail.com">
-            <FaEnvelope className="hover:text-navhover" />
+            <FaEnvelope className="hover:text-accent" />
           </a>
 
           <a
-            href="https://wa.me/923447475135"
+            href="https://wa.me/923447475135?text=Hello%20Muhammad%20Ismail,%20I%20visited%20your%20portfolio"
             target="_blank"
             rel="noreferrer"
           >
