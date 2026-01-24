@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   FaGithub,
   FaLinkedin,
@@ -7,80 +8,87 @@ import {
 import { socialLinks } from "../data/portfolioData";
 
 export default function Contact() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    const text = encodeURIComponent(
+      `📩 New Portfolio Message\n\n` +
+      `👤 Name: ${name}\n` +
+      `📧 Email: ${email}\n\n` +
+      `💬 Message:\n${message}`
+    );
+
+    window.open(
+      `https://wa.me/923447475135?text=${text}`,
+      "_blank"
+    );
+  };
+
   return (
-    <section
-      id="contact"
-      className="py-20 bg-base text-white scroll-mt-24"
-    >
+    <section id="contact" className="py-20 bg-base text-white">
       <div className="max-w-5xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
 
-        {/* NETLIFY FORM */}
         <form
-          name="contact"
-          method="POST"
-          data-netlify="true"
-          netlify-honeypot="bot-field"
+          onSubmit={handleSubmit}
           className="max-w-xl mx-auto grid gap-4"
         >
-          {/* REQUIRED hidden input */}
-          <input type="hidden" name="form-name" value="contact" />
-
-          {/* Honeypot */}
-          <input type="hidden" name="bot-field" />
-
           <input
             type="text"
-            name="name"
             placeholder="Your Name"
             required
-            className="p-3 rounded bg-gray-800 text-white"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="p-3 rounded bg-white/5 border border-white/10"
           />
 
           <input
             type="email"
-            name="email"
             placeholder="Your Email"
             required
-            className="p-3 rounded bg-gray-800 text-white"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="p-3 rounded bg-white/5 border border-white/10"
           />
 
           <textarea
-            name="message"
             placeholder="Your Message"
             rows="5"
             required
-            className="p-3 rounded bg-gray-800 text-white"
-          ></textarea>
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            className="p-3 rounded bg-white/5 border border-white/10"
+          />
 
           <button
             type="submit"
-            className="bg-accent text-base font-semibold py-3 rounded hover:opacity-90"
+            className="bg-green-500 text-black py-3 rounded font-semibold flex items-center justify-center gap-2 hover:bg-green-400"
           >
-            Send Message
+            <FaWhatsapp />
+            Send via WhatsApp
           </button>
         </form>
 
-        {/* SOCIAL LINKS */}
         <div className="mt-8 flex justify-center gap-6 text-2xl">
           <a href={socialLinks.github} target="_blank" rel="noreferrer">
-            <FaGithub className="hover:text-accent" />
+            <FaGithub />
           </a>
-
           <a href={socialLinks.linkedin} target="_blank" rel="noreferrer">
-            <FaLinkedin className="hover:text-accent" />
+            <FaLinkedin />
           </a>
-
           <a href="mailto:ismail.icup@gmail.com">
-            <FaEnvelope className="hover:text-accent" />
+            <FaEnvelope />
           </a>
-
           <a
-            href="https://wa.me/923447475135?text=Hello%20Muhammad%20Ismail,%20I%20visited%20your%20portfolio"
+            href="https://wa.me/923447475135"
             target="_blank"
             rel="noreferrer"
           >
-            <FaWhatsapp className="hover:text-green-400" />
+            <FaWhatsapp />
           </a>
         </div>
       </div>
