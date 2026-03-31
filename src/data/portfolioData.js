@@ -14,13 +14,14 @@ export const aboutData = {
 export const skills = [
   "HTML",
   "CSS",
-  "JavaScript",
   "React",
-  "Tailwind CSS",
-  "Node.js",
   "Python",
   "Scratch",
   "MS Office",
+  "Communication",
+  "Lesson Planning",
+  "Classroom Management",
+  "Assessment & Feedback"
 ];
 
 export const projects = [
